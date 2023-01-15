@@ -1,0 +1,76 @@
+<p>form works!</p>
+
+<p>
+
+    <!-- <input [(ngModel)]="name"> -->
+
+    <!-- <mat-form-field class="example-form-field">
+        <mat-label>Clearable input</mat-label>
+        <input matInput type="text" [(ngModel)]="value">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field> -->
+
+    <mat-form-field appearance="fill">
+        <mat-label>Fill form field</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="value">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    {{value}}
+</p>
+<p>
+<form>
+    <mat-form-field appearance="outline">
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder" [formControl]="emailFormControl">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+        <mat-error *ngIf="emailFormControl.hasError('email')">
+            Email is <strong>invalid</strong>
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    {{emailFormControl.value}}
+</form>
+<!-- </p> -->
+
+<mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+</mat-form-field>
+
+<form [formGroup]="myForm">
+    Value: {{ myForm.value | json }}
+    <hr>
+    <input class="p-2 m-2 form-control" placeholder="First name" formControlName="firstName">
+    <mat-error *ngIf="myForm.controls['firstName'].hasError('required')">
+        First name is <strong>required</strong>
+    </mat-error>
+    <input class="p-2 m-2 form-control" placeholder="Last name" formControlName="lastName">
+    <input class="p-2 m-2 form-control" placeholder="email" formControlName="email">
+    <mat-error *ngIf="myForm.controls['email'].hasError('email')">
+        email is <strong>invalid</strong>
+    </mat-error>
+    <input class="p-2 m-2 form-control" placeholder="phone" formControlName="phone">
+
+    <button class="btn btn-primary" type="submit" [disabled]="myForm.invalid">Eieieieieieie</button>
+</form>
+
+<button class="btn btn-info" (click)="setVal()">setValue</button>

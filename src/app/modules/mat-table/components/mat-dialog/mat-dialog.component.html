@@ -1,0 +1,18 @@
+<p>mat-dialog works!</p>
+
+<h1 mat-dialog-title>Hi {{data.position}}</h1>
+
+<div mat-dialog-content>
+
+    {{data.name}}
+    {{data.weight}}
+    {{data.symbol}}
+    {{data.position}}
+
+    data.position
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.position" cdkFocusInitial>Ok</button>
+</div>
